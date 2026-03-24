@@ -9,6 +9,8 @@ pipeline {
 
     environment {
         DOCKER_IMAGE_NAME = "spring-petclinic"
+        DOCKER_API_VERSION = '1.43'
+        COMPOSE_API_VERSION = '1.43'
         DOCKERHUB_CRED = credentials('dockerCredentials')
     }
     
