@@ -44,7 +44,7 @@ pipeline {
             steps {
                 echo 'Docker Image Push'
                 sh '''
-                docker push ${DOCKER_IMAGE_NAME}:latest
+                docker push sinhun19/${DOCKER_IMAGE_NAME}:latest
                 '''
                 
             }
