@@ -51,8 +51,7 @@ pipeline {
                 sshPublisher(publishers: [sshPublisherDesc(configName: 'target',
                 transfers:
                     [sshTransfer(cleanRemote: false, excludes: '',
-                execCommand:
-                    '''docker rm -f $(docker ps -aq)
+                execCommand:'''docker rm -f $(docker -ps -aq)
                 docker rmi -f $(docker images -q)
                 docker run -itd -p 80:8080 --name sinhun19/spring-petclinic:latest''',
                 execTimeout: 120000,
