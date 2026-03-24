@@ -48,24 +48,21 @@ pipeline {
 
         stage('Docker Container run'){
             steps {
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'target',
-                transfers:
-                    [sshTransfer(cleanRemote: false, excludes: '',
-                execCommand:'''docker rm -f $(docker -ps -aq)
+                sshPublisher(publishers:
+                [sshPublisherDesc(configName: 'target',
+                transfers: [sshTransfer(cleanRemote: false, excludes: '',
+                execCommand: '''docker rm -f $(docker ps -aq)
                 docker rmi -f $(docker images -q)
-                docker run -itd -p 80:8080 --name sinhun19/spring-petclinic:latest''',
+                docker run -itd -p 80:8080 --name sinhun19/spring-petclinic sinhun/spring-petclinic:latest''',
                 execTimeout: 120000,
-                flatten: false,
-                makeEmptyDirs: false,
-                noDefaultExcludes: false,
+                flatten: false, makeEmptyDirs: false,
+                noDefaultExcludes: false, 
                 patternSeparator: '[, ]+',
                 remoteDirectory: '',
                 remoteDirectorySDF: false,
-                removePrefix: 'target',
-                sourceFiles: '')],
+                removePrefix: 'target', sourceFiles: '')],
                 usePromotionTimestamp: false,
-                useWorkspaceInPromotion: false,
-                verbose: false)])
+                useWorkspaceInPromotion: false, verbose: false)])
                 echo 'Docker Container run'
             }
         }
