@@ -47,8 +47,7 @@ pipeline {
                 docker push sinhun19/${DOCKER_IMAGE_NAME}:latest
                 '''
                 
-            }
-        }   
+            } 
             post {
                 always {
                     sh '''
