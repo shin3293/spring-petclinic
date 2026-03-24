@@ -55,6 +55,7 @@ pipeline {
                     docker rmi -f ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}
                     docker rmi -f sinhun19/${DOCKER_IMAGE_NAME}:latest
                     '''
+                }
             }
         }
         stage('Docker Container run'){
